@@ -1,0 +1,337 @@
+.topBanner {
+  position: relative;
+  background-image: url("../images/banner.jpg");
+  min-height: 500px;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.topBannerOverlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  min-height: 500px;
+  width: 100%;
+}
+
+.navbar {
+  padding: 0.5rem 1rem;
+}
+
+.topBannerContent {
+  text-align: center;
+}
+
+.topBannerTitle {
+  color: #ffff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+}
+
+.topBannerSubTitle {
+  color: #ffff;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 23px;
+}
+
+.serviceCard {
+  margin: 5px 5px 5px 5px;
+  height: 22rem;
+  padding: 60px 30px 60px 30px;
+  box-shadow: 0 0 4px 0 rgba(0, 115, 230, 0.2);
+}
+
+.serviceCard:hover {
+  box-shadow: 0 0 8px 0 rgba(0, 115, 230, 0.2);
+}
+
+.serviceName {
+  margin-top: 1rem;
+  font-family: "Raleway", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.serviceDescription {
+  color: #2b2b2b;
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.serviceMainTitle {
+  color: #0073e6;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+  font-family: "Montserreat", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.navTitle {
+  font-family: "Montserreat", sans-serif;
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.navTitleScroll {
+  font-family: "Montserreat", sans-serif;
+  color: #0073e6 !important;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.navBackground {
+  transition: background-color 400ms linear;
+  background-color: rgba(00, 00, 00, 0.1) !important;
+}
+
+.navScrollBackground {
+  transition: background-color 400ms linear;
+  background-color: #fff !important;
+}
+
+.navItem {
+  text-transform: uppercase;
+  font-size: 16px;
+  text-decoration: none !important;
+  font-family: "Montserreat", sans-serif;
+  font-weight: 400;
+  color: #ffffff !important;
+}
+
+.navItemScroll {
+  text-transform: uppercase;
+  font-size: 16px;
+  text-decoration: none !important;
+  font-family: "Montserreat", sans-serif;
+  font-weight: 400;
+  color: #2b2b2b !important;
+}
+
+.des {
+  font-weight: 400;
+  color: #2b2b2b;
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  text-align: justify;
+}
+
+.summarySection {
+  margin-top: 5rem;
+}
+
+.summaryBanner {
+  position: relative;
+  background-image: url("../images/banner.jpg");
+  min-height: 350px;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.summaryBannerOverlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  min-height: 350px;
+  width: 100%;
+}
+
+.summaryBannerContent {
+  text-align: center;
+}
+
+.countSection {
+  margin-top: 16%;
+}
+
+.countNumber {
+  color: #ffffff;
+  font-family: "Montserreat", sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.workCard {
+  margin-top: 14%;
+  padding: 10px 10px 10px 10px;
+  border-radius: 2px;
+}
+
+.countTitle {
+  color: #ffffff;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  text-align: center;
+}
+
+.cardSubTitle {
+  font-weight: 400;
+  font-size: 14px;
+  color: #2b2b2b;
+  font-family: "Montserreat", sans-serif;
+  text-align: justify;
+}
+
+.iconBullet {
+  color: #0073e6;
+  font-size: 16px;
+}
+
+hr {
+  margin: 0 auto;
+}
+
+.projectCard {
+  border-radius: 2px;
+  border: none !important;
+  margin: 2px 2px 2px 2px;
+  box-shadow: 0 0 4px 0 rgba(0, 115, 230, 0.2);
+}
+
+.projectCardDes {
+  font-family: "Raleway", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.projectCardTitle {
+  font-family: "Montserreat", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.courseImg {
+  width: 100%;
+}
+
+.courseTitle {
+  font-family: "Montserreat", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: justify;
+}
+.courseDes {
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: justify;
+}
+.courseDetails {
+  color: #0073e6;
+  text-decoration: none;
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: justify;
+  display: block;
+}
+
+.videoCard {
+  box-shadow: 0 0 4px 0 rgba(0, 115, 230, 0.2);
+  padding: 6rem 3rem 6rem 3rem;
+  background-color: #ffffff;
+  margin: 50px auto;
+}
+.videoTitle {
+  color: #0073e6;
+  font-family: "Montserreat", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+}
+.videoDes {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.playBtn {
+  color: #0073e6;
+  font-size: 48px;
+  cursor: pointer;
+}
+
+.circleImg {
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #0073e6;
+  border-radius: 50%;
+}
+
+.socialLink {
+  text-decoration: none;
+  color: #0073e6;
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.footerLink {
+  color: #2b2b2b;
+  font-weight: 400;
+  font-size: 14px;
+  text-decoration: none;
+  font-family: "Raleway", sans-serif;
+}
+
+.footerSection {
+  box-shadow: 0 0 4px 0 rgba(0, 115, 230, 0.2);
+  margin-top: 5rem;
+}
+
+.copyrightSection {
+  padding: 20px 20px 20px 20px;
+  background-color: #0073e6;
+}
+
+.copyrightLink {
+  color: #ffffff;
+  font-family: "Montserreat", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.topFixedPage {
+  background-image: url("../../assets/images/banner.jpg");
+  min-height: 280px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.topPageOverlay {
+  position: absolute;
+  min-height: 280px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.pageTitle {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 28px;
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.form-control:focus {
+  border-radius: 2px !important;
+  border-color: #0073e6 !important;
+  box-shadow: 0 0 4px 0 rgba(0, 115, 230, 0.2) !important;
+}
+.nav-link.active {
+  color: #0073e6 !important;
+}
