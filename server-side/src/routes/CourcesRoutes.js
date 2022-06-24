@@ -1,23 +1,27 @@
 //external import
-const CourseRoutes = require("express").Router();
+const Courseroutes = require("express").Router();
 
 //internal import
 const CourseControllers = require("../controllers/CourseControllers");
 const { CheckLogin } = require("../middleware/CheckLogin");
 
 //Create new Course
-CourseRoutes.post("/", CheckLogin, CourseControllers.CreateCourse);
+Courseroutes.post("/", CheckLogin, CourseControllers.CreateCourse);
 
 //Select all Course
-CourseRoutes.get("/", CourseControllers.SelectAllCourse);
+Courseroutes.get("/", CheckLogin, CourseControllers.SelectAllCourse);
 
 //Select a Course by id
-CourseRoutes.get("/:CourseId", CourseControllers.SelectSingleCourse);
+Courseroutes.get(
+  "/:CourseId",
+  CheckLogin,
+  CourseControllers.SelectSingleCourse,
+);
 
 //Update a Course
-CourseRoutes.patch("/:CourseId", CheckLogin, CourseControllers.UpdatedCourse);
+Courseroutes.patch("/:CourseId", CheckLogin, CourseControllers.UpdatedCourse);
 
 //Delete  a Course
-CourseRoutes.delete("/:CourseId", CheckLogin, CourseControllers.deleteCourse);
+Courseroutes.delete("/:CourseId", CheckLogin, CourseControllers.deleteCourse);
 
-module.exports = CourseRoutes;
+module.exports = Courseroutes;

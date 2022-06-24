@@ -1,31 +1,35 @@
 //external import
-const HomeEtcRoutes = require("express").Router();
+const HomeEtcroutes = require("express").Router();
 
 //internal import
 const HomeEtcControllers = require("../controllers/HomeEtcControllers");
 const { CheckLogin } = require("../middleware/CheckLogin");
 
 //Create new HomeEtc
-HomeEtcRoutes.post("/", CheckLogin, HomeEtcControllers.CreateHomeEtc);
+HomeEtcroutes.post("/", CheckLogin, HomeEtcControllers.CreateHomeEtc);
 
 //Select all HomeEtc
-HomeEtcRoutes.get("/", HomeEtcControllers.SelectAllHomeEtc);
+HomeEtcroutes.get("/", CheckLogin, HomeEtcControllers.SelectAllHomeEtc);
 
 //Select a HomeEtc by id
-HomeEtcRoutes.get("/:HomeEtcId", HomeEtcControllers.SelectSingleHomeEtc);
+HomeEtcroutes.get(
+  "/:HomeEtcId",
+  CheckLogin,
+  HomeEtcControllers.SelectSingleHomeEtc,
+);
 
 //Update a HomeEtc
-HomeEtcRoutes.patch(
+HomeEtcroutes.patch(
   "/:HomeEtcId",
   CheckLogin,
   HomeEtcControllers.UpdatedHomeEtc,
 );
 
 //Delete  a HomeEtc
-HomeEtcRoutes.delete(
+HomeEtcroutes.delete(
   "/:HomeEtcId",
   CheckLogin,
   HomeEtcControllers.DeleteHomeEtc,
 );
 
-module.exports = HomeEtcRoutes;
+module.exports = HomeEtcroutes;

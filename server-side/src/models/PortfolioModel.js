@@ -23,6 +23,7 @@ const portfolioSchema = Schema(
       type: String,
       trim: true,
     },
+
     user: {
       type: Schema.Types.ObjectId,
       ref: "Profile",

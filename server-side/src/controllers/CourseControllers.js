@@ -54,8 +54,6 @@ exports.SelectSingleCourse = (req, res) => {
     .populate("user", "name userName _id")
     .exec()
     .then((data) => {
-      console.log(data);
-
       if (data && data.length > 0) {
         return res.json({ status: "success", data: data });
       } else {

@@ -1,22 +1,35 @@
 //external import
-const ContactRoutes = require("express").Router();
+const Contactroutes = require("express").Router();
 
 //internal import
 const ContactControllers = require("../controllers/ContactControllers");
+const { CheckLogin } = require("../middleware/CheckLogin");
 
 //Create new Contact
-ContactRoutes.post("/", ContactControllers.CreateContact);
+Contactroutes.post("/", ContactControllers.CreateContact);
 
 //Select all Contact
-ContactRoutes.get("/", ContactControllers.SelectAllContact);
+Contactroutes.get("/", CheckLogin, ContactControllers.SelectAllContact);
 
 //Select a Contact by id
-ContactRoutes.get("/:ContactId", ContactControllers.SelectSingleContact);
+Contactroutes.get(
+  "/:ContactId",
+  CheckLogin,
+  ContactControllers.SelectSingleContact,
+);
 
 //Update a Contact
-ContactRoutes.patch("/:ContactId", ContactControllers.UpdatedContact);
+Contactroutes.patch(
+  "/:ContactId",
+  CheckLogin,
+  ContactControllers.UpdatedContact,
+);
 
 //Delete  a Contact
-ContactRoutes.delete("/:ContactId", ContactControllers.DeleteContact);
+Contactroutes.delete(
+  "/:ContactId",
+  CheckLogin,
+  ContactControllers.DeleteContact,
+);
 
-module.exports = ContactRoutes;
+module.exports = Contactroutes;

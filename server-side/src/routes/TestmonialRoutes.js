@@ -1,34 +1,39 @@
 //external import
-const TestmonialRoutes = require("express").Router();
+const Testmonialroutes = require("express").Router();
 
 //internal import
 const TestmonialControllers = require("../controllers/TestmonialControllers");
 const { CheckLogin } = require("../middleware/CheckLogin");
 
 //Create new Testmonial
-TestmonialRoutes.post("/", CheckLogin, TestmonialControllers.CreateTestmonial);
+Testmonialroutes.post("/", CheckLogin, TestmonialControllers.CreateTestmonial);
 
 //Select all Testmonial
-TestmonialRoutes.get("/", TestmonialControllers.SelectAllTestmonial);
+Testmonialroutes.get(
+  "/",
+  CheckLogin,
+  TestmonialControllers.SelectAllTestmonial,
+);
 
 //Select a Testmonial by id
-TestmonialRoutes.get(
+Testmonialroutes.get(
   "/:TestmonialId",
+  CheckLogin,
   TestmonialControllers.SelectSingleTestmonial,
 );
 
 //Update a Testmonial
-TestmonialRoutes.patch(
+Testmonialroutes.patch(
   "/:TestmonialId",
   CheckLogin,
   TestmonialControllers.UpdatedTestmonial,
 );
 
 //Delete  a Testmonial
-TestmonialRoutes.delete(
+Testmonialroutes.delete(
   "/:TestmonialId",
   CheckLogin,
   TestmonialControllers.DeleteTestmonial,
 );
 
-module.exports = TestmonialRoutes;
+module.exports = Testmonialroutes;

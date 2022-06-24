@@ -1,14 +1,16 @@
 class AppUrl {
-  static BaseUrl = "http://localhost:5000/api/v1";
-  static HomeEtc = this.BaseUrl + "/homeEtc";
-  static Information = this.BaseUrl + "/information";
-  static Footer = this.BaseUrl + "/footer";
-  static SelectAllService = this.BaseUrl + "/service";
-  static SelectAllPortfolio = this.BaseUrl + "/portfolio";
-  static SelectAllCourse = this.BaseUrl + "/course";
-  static SelectAllChart = this.BaseUrl + "/chart";
-  static SelectAllTestmonial = this.BaseUrl + "/testmonial";
-  static SendMessage = this.BaseUrl + "/contact";
+  static HomeEtc = "/homeEtc";
+  static Information = "/information";
+  static Footer = "/footer";
+  static SelectAllService = "/service";
+  static SelectAllPortfolio = "/portfolio";
+  static SelectAllCourse = "/course";
+  static SelectAllChart = "/chart";
+  static SelectAllTestmonial = "/testmonial";
+  static SelectAllContact = "/contact";
+  static DeleteContact = this.SelectAllContact;
+  static DeleteChart = this.SelectAllChart;
+  static SelectProfile = "user/SelectProfile";
 }
 
 export default AppUrl;

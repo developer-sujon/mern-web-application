@@ -1,31 +1,35 @@
 //external import
-const ServiceRoutes = require("express").Router();
+const Serviceroutes = require("express").Router();
 
 //internal import
 const ServiceControllers = require("../controllers/ServiceControllers");
 const { CheckLogin } = require("../middleware/CheckLogin");
 
 //Create new Service
-ServiceRoutes.post("/", CheckLogin, ServiceControllers.CreateService);
+Serviceroutes.post("/", CheckLogin, ServiceControllers.CreateService);
 
 //Select all Service
-ServiceRoutes.get("/", ServiceControllers.SelectAllService);
+Serviceroutes.get("/", CheckLogin, ServiceControllers.SelectAllService);
 
 //Select a Service by id
-ServiceRoutes.get("/:ServiceId", ServiceControllers.SelectSingleService);
+Serviceroutes.get(
+  "/:ServiceId",
+  CheckLogin,
+  ServiceControllers.SelectSingleService,
+);
 
 //Update a Service
-ServiceRoutes.patch(
+Serviceroutes.patch(
   "/:ServiceId",
   CheckLogin,
   ServiceControllers.UpdatedService,
 );
 
 //Delete  a Service
-ServiceRoutes.delete(
+Serviceroutes.delete(
   "/:ServiceId",
   CheckLogin,
   ServiceControllers.DeleteService,
 );
 
-module.exports = ServiceRoutes;
+module.exports = Serviceroutes;

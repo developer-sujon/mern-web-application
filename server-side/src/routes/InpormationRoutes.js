@@ -1,38 +1,43 @@
 //external import
-const InformationRoutes = require("express").Router();
+const Informationroutes = require("express").Router();
 
 //internal import
 const InformationControllers = require("../controllers/InpormationControllers");
 const { CheckLogin } = require("../middleware/CheckLogin");
 
 //Create new Information
-InformationRoutes.post(
+Informationroutes.post(
   "/",
   CheckLogin,
   InformationControllers.CreateInformation,
 );
 
 //Select all Information
-InformationRoutes.get("/", InformationControllers.SelectAllInformation);
+Informationroutes.get(
+  "/",
+  CheckLogin,
+  InformationControllers.SelectAllInformation,
+);
 
 //Select a Information by id
-InformationRoutes.get(
+Informationroutes.get(
   "/:InformationId",
+  CheckLogin,
   InformationControllers.SelectSingleInformation,
 );
 
 //Update a Information
-InformationRoutes.patch(
+Informationroutes.patch(
   "/:InformationId",
   CheckLogin,
   InformationControllers.UpdatedInformation,
 );
 
 //Delete  a Information
-InformationRoutes.delete(
+Informationroutes.delete(
   "/:InformationId",
   CheckLogin,
   InformationControllers.DeleteInformation,
 );
 
-module.exports = InformationRoutes;
+module.exports = Informationroutes;

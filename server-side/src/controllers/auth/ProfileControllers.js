@@ -87,9 +87,17 @@ exports.LoginProfile = (req, res) => {
             };
             // Generate the token
             const token = jwt.sign(payload, secretKey, { expiresIn: "24h" });
-            res.status(200).json({ status: "success", data: token });
+            res.status(200).json({ status: "success", token: token });
+          } else {
+            res
+              .status(401)
+              .json({ status: "fail", data: "authorization Credential" });
           }
         });
+      } else {
+        res
+          .status(401)
+          .json({ status: "fail", data: "authorization Credential" });
       }
     }
   });

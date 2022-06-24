@@ -19,7 +19,7 @@ exports.CreateChart = (req, res) => {
 };
 
 //Select all charts
-exports.SelectAllChart = async (req, res) => {
+exports.SelectAllChart = (req, res) => {
   const projection = " -createdAt -updatedAt";
 
   Chart.find({}, projection)

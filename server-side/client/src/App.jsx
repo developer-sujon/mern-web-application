@@ -1,14 +1,10 @@
 //External Lib  imports
-import AppRoutes from "./Routes/AppRoutes";
+import AppRoutes from "./routes/AppRoutes";
 
 //Internal Lib  imports
 
 function App() {
-  return (
-    <div className="App">
-      <AppRoutes />
-    </div>
-  );
+  return <AppRoutes />;
 }
 
 export default App;

@@ -1,34 +1,35 @@
 //external import
-const PortfolioRoutes = require("express").Router();
+const Portfolioroutes = require("express").Router();
 
 //internal import
 const PortfolioControllers = require("../controllers/PortfolioControllers");
 const { CheckLogin } = require("../middleware/CheckLogin");
 
-//Create new contact
-PortfolioRoutes.post("/", CheckLogin, PortfolioControllers.CreatePortfolio);
+//Create new Profile
+Portfolioroutes.post("/", CheckLogin, PortfolioControllers.CreatePortfolio);
 
-//Select all contact
-PortfolioRoutes.get("/", PortfolioControllers.SelectAllPortfolio);
+//Select all Profile
+Portfolioroutes.get("/", CheckLogin, PortfolioControllers.SelectAllPortfolio);
 
-//Select a contact by id
-PortfolioRoutes.get(
+//Select a Profile by id
+Portfolioroutes.get(
   "/:PortfolioId",
+  CheckLogin,
   PortfolioControllers.SelectSinglePortfolio,
 );
 
-//Update a contact
-PortfolioRoutes.patch(
+//Update a Profile
+Portfolioroutes.patch(
   "/:PortfolioId",
   CheckLogin,
   PortfolioControllers.UpdatedPortfolio,
 );
 
-//Delete  a contact
-PortfolioRoutes.delete(
+//Delete  a Profile
+Portfolioroutes.delete(
   "/:PortfolioId",
   CheckLogin,
   PortfolioControllers.DeletePortfolio,
 );
 
-module.exports = PortfolioRoutes;
+module.exports = Portfolioroutes;

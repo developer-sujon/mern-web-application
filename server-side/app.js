@@ -13,16 +13,16 @@ const ConnectDB = require("./src/config/ConnectDB");
 const CheckLogin = require("./src/middleware/CheckLogin");
 
 //imports routes
-const ChartRoutes = require("./src/routes/ChartRoutes");
-const ContactRoutes = require("./src/routes/ContactRoutes");
-const CourcesRoutes = require("./src/routes/CourcesRoutes");
-const PortfolioRoutes = require("./src/routes/PortfolioRoutes");
-const ServiceRoutes = require("./src/routes/ServiceRoutes");
-const TestmonialRoutes = require("./src/routes/TestmonialRoutes");
-const FooterRoutes = require("./src/routes/FooterRoutes");
-const InformationRoutes = require("./src/routes/InpormationRoutes");
-const HomeEtcRoutes = require("./src/routes/HomeEtcRoutes");
-const ProfileRoutes = require("./src/routes/auth/ProfileRoutes");
+const Chartroutes = require("./src/routes/Chartroutes");
+const Contactroutes = require("./src/routes/Contactroutes");
+const Courcesroutes = require("./src/routes/Courcesroutes");
+const Portfolioroutes = require("./src/routes/Portfolioroutes");
+const Serviceroutes = require("./src/routes/Serviceroutes");
+const Testmonialroutes = require("./src/routes/Testmonialroutes");
+const Footerroutes = require("./src/routes/Footerroutes");
+const Informationroutes = require("./src/routes/Inpormationroutes");
+const HomeEtcroutes = require("./src/routes/HomeEtcroutes");
+const Profileroutes = require("./src/routes/auth/Profileroutes");
 
 //security lib imports
 const cors = require("cors");
@@ -69,16 +69,16 @@ app.use(express.static("client/build"));
 
 // Routing Implement
 
-app.use("/api/v1/Chart", ChartRoutes);
-app.use("/api/v1/Contact", ContactRoutes);
-app.use("/api/v1/Course", CourcesRoutes);
-app.use("/api/v1/Portfolio", PortfolioRoutes);
-app.use("/api/v1/Service", ServiceRoutes);
-app.use("/api/v1/Testmonial", TestmonialRoutes);
-app.use("/api/v1/Footer", FooterRoutes);
-app.use("/api/v1/Information", InformationRoutes);
-app.use("/api/v1/HomeEtc", HomeEtcRoutes);
-app.use("/api/v1/User", ProfileRoutes);
+app.use("/api/v1/Chart", Chartroutes);
+app.use("/api/v1/Contact", Contactroutes);
+app.use("/api/v1/Course", Courcesroutes);
+app.use("/api/v1/Portfolio", Portfolioroutes);
+app.use("/api/v1/Service", Serviceroutes);
+app.use("/api/v1/Testmonial", Testmonialroutes);
+app.use("/api/v1/Footer", Footerroutes);
+app.use("/api/v1/Information", Informationroutes);
+app.use("/api/v1/HomeEtc", HomeEtcroutes);
+app.use("/api/v1/User", Profileroutes);
 
 // Add React Front End Routing
 app.get("*", (req, res) => {

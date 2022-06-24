@@ -38,14 +38,13 @@ exports.SelectAllContact = (req, res) => {
 
 //Select a contact by id
 exports.SelectSingleContact = (req, res) => {
-  const { contactId } = req.params;
+  const { ContactId } = req.params;
   const projection = "-_id -createdAt -updatedAt";
 
-  Contact.find({ _id: contactId }, projection, (err, data) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).json({ status: "fail", data: err.message });
-    } else {
+  Contact.find({ _id: ContactId }, projection)
+    .populate("user", "name userName _id")
+    .exec()
+    .then((data) => {
       if (data && data.length > 0) {
         return res.json({ status: "success", data: data });
       } else {
@@ -53,18 +52,21 @@ exports.SelectSingleContact = (req, res) => {
           .status(404)
           .json({ status: "fail", data: "Contact not found" });
       }
-    }
-  });
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.status(500).json({ status: "fail", data: err.message });
+    });
 };
 
 //Update a contact
 exports.UpdatedContact = (req, res) => {
-  const { contactId } = req.params;
+  const { ContactId } = req.params;
   const { contactName, contactEmail, contactMessage } = req.body;
   const newContact = { contactName, contactEmail, contactMessage };
 
   Contact.findByIdAndUpdate(
-    { _id: contactId },
+    { _id: ContactId },
     newContact,
     { new: true },
     (err, data) => {
@@ -73,7 +75,10 @@ exports.UpdatedContact = (req, res) => {
         return res.status(500).json({ status: "fail", data: err.message });
       } else {
         if (data) {
-          return res.json({ status: "success", data: data });
+          return res.json({
+            status: "success",
+            data: "Contact Update Successfull",
+          });
         } else {
           return res
             .status(404)
@@ -86,19 +91,22 @@ exports.UpdatedContact = (req, res) => {
 
 //Delete  a contact
 exports.DeleteContact = (req, res) => {
-  const { contactId } = req.params;
+  const { ContactId } = req.params;
 
-  Contact.findByIdAndDelete({ _id: contactId }, (err, data) => {
+  Contact.findByIdAndDelete({ _id: ContactId }, (err, data) => {
     if (err) {
       console.log(err);
       return res.status(500).json({ status: "fail", data: err.message });
     } else {
       if (data) {
-        return res.json({ status: "success", data: data });
+        return res.json({
+          status: "success",
+          data: "Contact Delete Successfull",
+        });
       } else {
         return res
           .status(404)
-          .json({ status: "fail", data: "Course not found" });
+          .json({ status: "fail", data: "Contact not found" });
       }
     }
   });

@@ -38,6 +38,6 @@ const profileModel = Schema({
   },
 });
 
-const Profile = model("Profile", profileModel);
+const Profile = new model("Profile", profileModel);
 
 module.exports = Profile;

@@ -1,12 +1,12 @@
 //external import
-const ProfileRoutes = require("express").Router();
+const Profileroutes = require("express").Router();
 
 //internal import
 const ProfileController = require("../../controllers/auth/ProfileControllers");
 
 //Registration User
-ProfileRoutes.post("/RegistarProfile", ProfileController.RegistarProfile);
-ProfileRoutes.get("/SelectProfile", ProfileController.SelectProfile);
-ProfileRoutes.post("/LoginProfile", ProfileController.LoginProfile);
+Profileroutes.post("/RegistarProfile", ProfileController.RegistarProfile);
+Profileroutes.get("/SelectProfile", ProfileController.SelectProfile);
+Profileroutes.post("/LoginProfile", ProfileController.LoginProfile);
 
-module.exports = ProfileRoutes;
+module.exports = Profileroutes;
