@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import {
   errorMessage,
   successMessage,
@@ -8,6 +9,8 @@ import {
 import { isEmpty } from "../helper/Validation/Validation";
 import User from "../Services/auth.services";
 const LoginPage = () => {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     userName: "",
     password: "",
@@ -55,6 +58,7 @@ const LoginPage = () => {
             const token = data["data"].token;
             sessionStorage.setItem("token", token);
             successMessage("Login Successfull");
+            navigate("/");
           } else {
             errorMessage("Authorization Credential");
           }
