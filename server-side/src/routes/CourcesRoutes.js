@@ -9,12 +9,12 @@ const { CheckLogin } = require("../middleware/CheckLogin");
 Courseroutes.post("/", CheckLogin, CourseControllers.CreateCourse);
 
 //Select all Course
-Courseroutes.get("/", CheckLogin, CourseControllers.SelectAllCourse);
+Courseroutes.get("/", CourseControllers.SelectAllCourse);
 
 //Select a Course by id
 Courseroutes.get(
   "/:CourseId",
-  CheckLogin,
+
   CourseControllers.SelectSingleCourse,
 );
 

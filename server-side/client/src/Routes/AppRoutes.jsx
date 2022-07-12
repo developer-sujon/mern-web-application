@@ -1,5 +1,5 @@
 //external Lib  imports
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import ContactPage from "../pages/ContactPage";
 import DashboardPage from "../pages/DashboardPage";
@@ -15,8 +15,27 @@ import ForgetPasswordPage from "../pages/ForgetPasswordPage";
 import SettingPage from "../pages/SettingPage";
 import Private from "../components/Private/Private";
 import NotFoundPage from "../pages/NotFoundPage";
+import { AuthContext } from "../context/authContext";
+import RestClient from "../Services/RestClient";
+import AppUrl from "../Services/AppUrl";
+import { loginFailure, loginSuccess } from "../context/authAction";
 
 function Approutes() {
+  const { user, dispatch } = useContext(AuthContext);
+
+  useEffect(() => {
+    RestClient.GetRequest(AppUrl.SelectProfile)
+      .then((response) => {
+        console.log(response);
+        dispatch(loginSuccess(response.data["data"][0]));
+      })
+      .catch((err) => {
+        dispatch(loginFailure());
+      });
+  }, []);
+
+  console.log(user);
+
   return (
     <Routes>
       <Route path="/*" element={<Private />}>
@@ -31,7 +50,10 @@ function Approutes() {
         <Route path="setting" element={<SettingPage />} />
       </Route>
 
-      <Route path="/login" element={<LoginPage />} />
+      <Route
+        path="/login"
+        element={user ? <Private /> : <ForgetPasswordPage />}
+      />
       <Route path="/registration" element={<RegistrationPage />} />
       <Route path="/forget-password" element={<ForgetPasswordPage />} />
       <Route path="*" element={<NotFoundPage />} />

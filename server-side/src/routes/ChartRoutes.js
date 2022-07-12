@@ -9,10 +9,10 @@ const { CheckLogin } = require("../middleware/CheckLogin");
 Chartroutes.post("/", CheckLogin, ChartControllers.CreateChart);
 
 //Select all Chart
-Chartroutes.get("/", CheckLogin, ChartControllers.SelectAllChart);
+Chartroutes.get("/", ChartControllers.SelectAllChart);
 
 //Select a Chart by id
-Chartroutes.get("/:ChartId", CheckLogin, ChartControllers.SelectSingleChart);
+Chartroutes.get("/:ChartId", ChartControllers.SelectSingleChart);
 
 //Update a Chart
 Chartroutes.patch("/:ChartId", CheckLogin, ChartControllers.UpdatedChart);

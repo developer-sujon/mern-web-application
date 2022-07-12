@@ -64,7 +64,7 @@ const DB_OPTIONS = {
 };
 
 //connection database
-ConnectDB(MONGODB_CONNECTION_URL, DB_OPTIONS);
+ConnectDB(MONGODB_CONNECTION_URL, DB_OPTIONS,);
 app.use(express.static("client/build"));
 
 // Routing Implement

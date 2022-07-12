@@ -9,14 +9,10 @@ const { CheckLogin } = require("../middleware/CheckLogin");
 Contactroutes.post("/", ContactControllers.CreateContact);
 
 //Select all Contact
-Contactroutes.get("/", CheckLogin, ContactControllers.SelectAllContact);
+Contactroutes.get("/", ContactControllers.SelectAllContact);
 
 //Select a Contact by id
-Contactroutes.get(
-  "/:ContactId",
-  CheckLogin,
-  ContactControllers.SelectSingleContact,
-);
+Contactroutes.get("/:ContactId", ContactControllers.SelectSingleContact);
 
 //Update a Contact
 Contactroutes.patch(

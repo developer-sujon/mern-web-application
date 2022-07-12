@@ -9,12 +9,12 @@ const { CheckLogin } = require("../middleware/CheckLogin");
 HomeEtcroutes.post("/", CheckLogin, HomeEtcControllers.CreateHomeEtc);
 
 //Select all HomeEtc
-HomeEtcroutes.get("/", CheckLogin, HomeEtcControllers.SelectAllHomeEtc);
+HomeEtcroutes.get("/", HomeEtcControllers.SelectAllHomeEtc);
 
 //Select a HomeEtc by id
 HomeEtcroutes.get(
   "/:HomeEtcId",
-  CheckLogin,
+
   HomeEtcControllers.SelectSingleHomeEtc,
 );
 

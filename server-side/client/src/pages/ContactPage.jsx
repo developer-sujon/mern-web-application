@@ -23,9 +23,9 @@ function ContactPage() {
 
   const fetchAllContact = () => {
     RestClient.GetRequest(AppUrl.SelectAllContact)
-      .then((result) => {
-        if (result.status === "success") {
-          setContacts(result.data);
+      .then((response) => {
+        if (response.status === 200) {
+          setContacts(response.data.data);
           setIsloading(false);
           setIsError(false);
         }

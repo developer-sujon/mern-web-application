@@ -15,14 +15,14 @@ Informationroutes.post(
 //Select all Information
 Informationroutes.get(
   "/",
-  CheckLogin,
+
   InformationControllers.SelectAllInformation,
 );
 
 //Select a Information by id
 Informationroutes.get(
   "/:InformationId",
-  CheckLogin,
+
   InformationControllers.SelectSingleInformation,
 );
 

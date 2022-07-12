@@ -210,9 +210,9 @@ function ServicePage() {
 
   const fetchAllService = () => {
     RestClient.GetRequest(AppUrl.SelectAllService)
-      .then((result) => {
-        if (result.status === "success") {
-          setService(result.data);
+      .then((response) => {
+        if (response.status === 200) {
+          setService(response.data.data);
           setIsloading(false);
           setIsError(false);
         }

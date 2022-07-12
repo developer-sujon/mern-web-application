@@ -30,9 +30,9 @@ function ProfilePage() {
 
   const fetchProfile = () => {
     RestClient.GetRequest(AppUrl.SelectProfile)
-      .then((result) => {
-        if (result.status === "success") {
-          setProfile(result.data);
+      .then((response) => {
+        if (response.status === 200) {
+          setProfile(response.data.data);
           setIsloading(false);
           setIsError(false);
         }

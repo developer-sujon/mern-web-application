@@ -189,9 +189,9 @@ function TestimonialPage() {
 
   const fetchAllTestimonial = () => {
     RestClient.GetRequest(AppUrl.SelectAllTestmonial)
-      .then((result) => {
-        if ((result.status = "success")) {
-          setTestimonial(result.data);
+      .then((response) => {
+        if ((response.status = 200)) {
+          setTestimonial(response.data.data);
           setIsloading(false);
           setIsError(false);
         }

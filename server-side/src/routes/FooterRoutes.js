@@ -9,12 +9,12 @@ const { CheckLogin } = require("../middleware/CheckLogin");
 Footerroutes.post("/", CheckLogin, FooterControllers.CreateFooter);
 
 //Select all Footer
-Footerroutes.get("/", CheckLogin, FooterControllers.SelectAllFooter);
+Footerroutes.get("/", FooterControllers.SelectAllFooter);
 
 //Select a Footer by id
 Footerroutes.get(
   "/:FooterId",
-  CheckLogin,
+
   FooterControllers.SelectSingleFooter,
 );
 

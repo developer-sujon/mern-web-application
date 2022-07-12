@@ -1,16 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+
 import {
   errorMessage,
   successMessage,
 } from "../helper/ToastMessage/ToastMessage";
 import { isEmpty } from "../helper/Validation/Validation";
-import User from "../Services/auth.services";
+import RestClient from "../Services/RestClient";
 const LoginPage = () => {
-  const navigate = useNavigate();
-
   const [form, setForm] = useState({
     userName: "",
     password: "",
@@ -52,13 +50,12 @@ const LoginPage = () => {
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
     } else {
-      User.Login(form)
-        .then((data) => {
-          if (data.status === 200) {
-            const token = data["data"].token;
+      RestClient.PostRequest("/user/LoginProfile", form)
+        .then((response) => {
+          if (response.status === 200) {
+            const token = response.data.token;
             sessionStorage.setItem("token", token);
             successMessage("Login Successfull");
-            navigate("/");
           } else {
             errorMessage("Authorization Credential");
           }

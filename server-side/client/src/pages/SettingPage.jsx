@@ -22,8 +22,8 @@ function SettingPage() {
 
   const fetchAllContact = () => {
     RestClient.GetRequest(AppUrl.SelectAllMessage)
-      .then((result) => {
-        setContacts(result.data);
+      .then((response) => {
+        setContacts(response.data.data);
         setIsloading(false);
         setIsError(false);
       })

@@ -9,12 +9,12 @@ const { CheckLogin } = require("../middleware/CheckLogin");
 Serviceroutes.post("/", CheckLogin, ServiceControllers.CreateService);
 
 //Select all Service
-Serviceroutes.get("/", CheckLogin, ServiceControllers.SelectAllService);
+Serviceroutes.get("/", ServiceControllers.SelectAllService);
 
 //Select a Service by id
 Serviceroutes.get(
   "/:ServiceId",
-  CheckLogin,
+
   ServiceControllers.SelectSingleService,
 );
 

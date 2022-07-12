@@ -155,9 +155,9 @@ function ChartPage() {
 
   const fetchAllChart = () => {
     RestClient.GetRequest(AppUrl.SelectAllChart)
-      .then((result) => {
-        if (result.status === "success") {
-          setChart(result.data);
+      .then((response) => {
+        if (response.status === 200) {
+          setChart(response.data.data);
           setIsloading(false);
           setIsError(false);
         }

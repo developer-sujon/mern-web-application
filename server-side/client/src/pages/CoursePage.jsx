@@ -213,9 +213,9 @@ function CoursePage() {
 
   const fetchAllCourse = () => {
     RestClient.GetRequest(AppUrl.SelectAllCourse)
-      .then((result) => {
-        if (result.status === "success") {
-          setCourse(result.data);
+      .then((response) => {
+        if (response.status === 200) {
+          setCourse(response.data.data);
           setIsloading(false);
           setIsError(false);
         }

@@ -235,9 +235,9 @@ function ProjectPage() {
 
   const fetchAllProject = () => {
     RestClient.GetRequest(AppUrl.SelectAllPortfolio)
-      .then((result) => {
-        if (result.status === "success") {
-          setProject(result.data);
+      .then((response) => {
+        if (response.status === 200) {
+          setProject(response.data.data);
           setIsloading(false);
           setIsError(false);
         }

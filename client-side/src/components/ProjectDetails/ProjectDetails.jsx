@@ -38,7 +38,7 @@ const ProjectDetails = () => {
           ...projectInfo,
           isLoading: false,
           isEorror: true,
-          notFound: true,
+          notFound: false,
         });
       });
   }, []);

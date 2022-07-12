@@ -8,10 +8,13 @@ import "./assets/css/animate.min.css";
 import "./assets/css/custom.css";
 
 import App from "./App";
+import { AuthContextProvider } from "./context/authContext";
 const container = document.getElementById("app");
 const root = createRoot(container);
 root.render(
   <BrowserRouter>
-    <App />
+    <AuthContextProvider>
+      <App />
+    </AuthContextProvider>
   </BrowserRouter>,
 );

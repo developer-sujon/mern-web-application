@@ -9,16 +9,11 @@ const { CheckLogin } = require("../middleware/CheckLogin");
 Testmonialroutes.post("/", CheckLogin, TestmonialControllers.CreateTestmonial);
 
 //Select all Testmonial
-Testmonialroutes.get(
-  "/",
-  CheckLogin,
-  TestmonialControllers.SelectAllTestmonial,
-);
+Testmonialroutes.get("/", TestmonialControllers.SelectAllTestmonial);
 
 //Select a Testmonial by id
 Testmonialroutes.get(
   "/:TestmonialId",
-  CheckLogin,
   TestmonialControllers.SelectSingleTestmonial,
 );
 

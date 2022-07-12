@@ -9,12 +9,12 @@ const { CheckLogin } = require("../middleware/CheckLogin");
 Portfolioroutes.post("/", CheckLogin, PortfolioControllers.CreatePortfolio);
 
 //Select all Profile
-Portfolioroutes.get("/", CheckLogin, PortfolioControllers.SelectAllPortfolio);
+Portfolioroutes.get("/", PortfolioControllers.SelectAllPortfolio);
 
 //Select a Profile by id
 Portfolioroutes.get(
   "/:PortfolioId",
-  CheckLogin,
+
   PortfolioControllers.SelectSinglePortfolio,
 );
 

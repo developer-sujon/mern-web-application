@@ -14,15 +14,10 @@ class RestClient {
       .get(url)
       .then((response) => {
         if (response.status === 200) {
-          return response.data;
+          return response;
         }
       })
       .catch((err) => {
-        console.log(err);
-
-        if (err.response.status === 401) {
-          // window.location.href = "/login";
-        }
         return null;
       });
   };
@@ -31,7 +26,7 @@ class RestClient {
     return axios
       .post(url, postJson)
       .then((response) => {
-        return response.data;
+        return response;
       })
       .catch((err) => {
         return null;
@@ -42,7 +37,7 @@ class RestClient {
     return axios
       .delete(url)
       .then((response) => {
-        return response.data;
+        return response;
       })
       .catch((err) => {
         return null;
@@ -53,7 +48,7 @@ class RestClient {
     return axios
       .patch(url, postJson)
       .then((response) => {
-        return response.data;
+        return response;
       })
       .catch((err) => {
         return null;
