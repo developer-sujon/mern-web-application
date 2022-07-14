@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import LoadingImg from "../../assets/img/laoding.svg";
+import LoadingImg from "../../Assets/img/laoding.svg";
 
 export class Loading extends Component {
   render() {

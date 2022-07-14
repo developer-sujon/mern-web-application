@@ -1,11 +1,15 @@
-class Validation {
+class FormValidation {
   isEmpty(value) {
-    if (value.length <= 0) {
-      return true;
-    } else {
-      return false;
-    }
+    return value.length <= 0;
+  }
+  isEmail(value) {
+    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return regexEmail.test(value);
+  }
+  isMobile(value) {
+    let regexMobile = /(^(\+88|0088|88)?(01){1}[3456789]{1}(\d){8})$/;
+    return regexMobile.test(value);
   }
 }
 
-export const { isEmpty } = new Validation();
+export const { isEmpty } = new FormValidation();

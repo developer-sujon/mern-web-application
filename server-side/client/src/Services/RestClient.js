@@ -1,9 +1,9 @@
 //External Lib import
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:5000/api/v1";
+axios.defaults.baseURL = "/api/v1";
 axios.defaults.headers.common["Authorization"] =
-  "Bearer " + sessionStorage.getItem("token");
+  "Bearer " + sessionStorage.getItem("accessToken");
 
 axios.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded";
@@ -37,7 +37,7 @@ class RestClient {
     return axios
       .delete(url)
       .then((response) => {
-        return response;
+        return response.data;
       })
       .catch((err) => {
         return null;

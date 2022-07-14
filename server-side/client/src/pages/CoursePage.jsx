@@ -14,12 +14,12 @@ import Loading from "../components/Loading/Loading";
 import WentWrong from "../components/WentWrong/WentWrong";
 import NotFound from "../components/NotFound/NotFound";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
-import { isEmpty } from "../helper/Validation/Validation";
+import { isEmpty } from "../Helper/Validation/Validation";
 import Swal from "sweetalert2";
 import {
   errorMessage,
   successMessage,
-} from "../helper/ToastMessage/ToastMessage";
+} from "../Helper/ToastMessage/ToastMessage";
 
 const AddCourseModal = ({
   showAddModal,
@@ -92,7 +92,7 @@ const AddCourseModal = ({
             </Form.Control.Feedback>
           </Form.Group>
           <Button variant="primary" type="submit">
-            Update Course
+            Add Course
           </Button>
         </Form>
       </Modal.Body>
@@ -273,7 +273,7 @@ function CoursePage() {
     } else {
       RestClient.PostRequest(AppUrl.SelectAllCourse, form)
         .then((data) => {
-          if (data.status === "success") {
+          if (data.status === 201) {
             successMessage("Course Create Successfull");
             fetchAllCourse();
             setShowAddModal(false);
@@ -293,13 +293,13 @@ function CoursePage() {
 
     RestClient.GetRequest(AppUrl.SelectAllCourse + "/" + id)
       .then((data) => {
-        if (data.status === "success") {
+        if (data.status === 200) {
           setForm({
             ...form,
-            courseName: data["data"][0].courseName,
-            courseDescription: data["data"][0].courseDescription,
-            courseThumbnail: data["data"][0].courseThumbnail,
-            courseCover: data["data"][0].courseCover,
+            courseName: data.data["data"][0].courseName,
+            courseDescription: data.data["data"][0].courseDescription,
+            courseThumbnail: data.data["data"][0].courseThumbnail,
+            courseCover: data.data["data"][0].courseCover,
           });
           setIsloading(false);
         }
@@ -318,7 +318,7 @@ function CoursePage() {
     } else {
       RestClient.PatchRequest(AppUrl.SelectAllCourse + "/" + editCourseId, form)
         .then((data) => {
-          if (data.status === "success") {
+          if (data.status === 200) {
             successMessage("Course Update Successfull");
             fetchAllCourse();
             setShowEditModal(false);
@@ -489,8 +489,8 @@ function CoursePage() {
 
   return (
     <>
-      <MasterLayout>
-        <Container fluid={true} className="content-body" title="Course">
+      <MasterLayout title="Course">
+        <Container fluid={true} className="content-body">
           <Row>
             <Col>
               <Button onClick={handleAddModalShow}>Add Course</Button>

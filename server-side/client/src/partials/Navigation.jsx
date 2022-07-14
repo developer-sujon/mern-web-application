@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 //Internal Lib Import
-import logo from "../assets/img/logo.svg";
+import logo from "../Assets/img/logo.svg";
 
 function Navigation({ openMenu, setOpenMenu, title }) {
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -40,6 +40,11 @@ function Navigation({ openMenu, setOpenMenu, title }) {
       }
       setIsFullScreen(true);
     }
+  };
+
+  const logout = () => {
+    sessionStorage.removeItem("accessToken");
+    window.location.href = "/login";
   };
 
   return (
@@ -98,15 +103,14 @@ function Navigation({ openMenu, setOpenMenu, title }) {
                   <AiOutlineUser className="link-item-icon" />
                   <span className="link-item-caption">Profile</span>
                 </NavLink>
-                <NavLink
-                  to="/b"
-                  className={({ isActive }) =>
-                    isActive ? "link-item-active" : "link-item"
-                  }
+                <span
+                  className="link-item"
+                  onClick={logout}
+                  style={{ cursor: "pointer" }}
                 >
                   <AiOutlineLogout className="link-item-icon" />
                   <span className="link-item-caption">Logout</span>
-                </NavLink>
+                </span>
               </div>
             </div>
           </div>

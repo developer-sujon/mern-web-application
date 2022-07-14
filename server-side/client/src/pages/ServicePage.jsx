@@ -14,12 +14,12 @@ import Loading from "../components/Loading/Loading";
 import WentWrong from "../components/WentWrong/WentWrong";
 import NotFound from "../components/NotFound/NotFound";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
-import { isEmpty } from "../helper/Validation/Validation";
+import { isEmpty } from "../Helper/Validation/Validation";
 import Swal from "sweetalert2";
 import {
   errorMessage,
   successMessage,
-} from "../helper/ToastMessage/ToastMessage";
+} from "../Helper/ToastMessage/ToastMessage";
 
 const AddServiceModal = ({
   showAddModal,
@@ -270,7 +270,7 @@ function ServicePage() {
     } else {
       RestClient.PostRequest(AppUrl.SelectAllService, form)
         .then((data) => {
-          if (data.status === "success") {
+          if (data.status === 201) {
             successMessage("Service Create Successfull");
             fetchAllService();
             setShowAddModal(false);
@@ -290,13 +290,13 @@ function ServicePage() {
 
     RestClient.GetRequest(AppUrl.SelectAllService + "/" + id)
       .then((data) => {
-        if (data.status === "success") {
+        if (data.status === 200) {
           setForm({
             ...form,
-            serviceName: data["data"][0].serviceName,
-            serviceDescription: data["data"][0].serviceDescription,
-            serviceThumbnail: data["data"][0].serviceThumbnail,
-            serviceCover: data["data"][0].serviceCover,
+            serviceName: data.data["data"][0].serviceName,
+            serviceDescription: data.data["data"][0].serviceDescription,
+            serviceThumbnail: data.data["data"][0].serviceThumbnail,
+            serviceCover: data.data["data"][0].serviceCover,
           });
           setIsloading(false);
         }
@@ -318,7 +318,7 @@ function ServicePage() {
         form,
       )
         .then((data) => {
-          if (data.status === "success") {
+          if (data.status === 200) {
             successMessage("Service Update Successfull");
             fetchAllService();
             setShowEditModal(false);

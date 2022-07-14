@@ -1,12 +1,16 @@
+//external import
 import cogoToast from "cogo-toast";
 
 class ToastMessage {
-  successMessage(message) {
-    cogoToast.success(message);
+  successMessage(msg) {
+    return cogoToast.success(msg, {
+      position: "bottom-center",
+    });
   }
-
-  errorMessage(message) {
-    cogoToast.error(message);
+  errorMessage(msg) {
+    return cogoToast.error(msg, {
+      position: "bottom-center",
+    });
   }
 }
 

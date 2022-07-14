@@ -1,7 +1,5 @@
-//External Lib  imports
-import AppRoutes from "./routes/AppRoutes";
-
 //Internal Lib  imports
+import AppRoutes from "./Routes/AppRoutes";
 
 function App() {
   return <AppRoutes />;

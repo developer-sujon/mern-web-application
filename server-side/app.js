@@ -6,7 +6,7 @@ const ErrorHandler = require("./src/middleware/ErrorHandler");
 const path = require("path");
 const app = new express();
 
-dotenv.config({ path: path.join(__dirname, "./.env") });
+dotenv.config({ path: path.join(__dirname, "./confiq.env") });  
 
 //internal imports
 const ConnectDB = require("./src/config/ConnectDB");
@@ -31,6 +31,9 @@ const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 const expressMongoSanitize = require("express-mongo-sanitize");
 const xssClean = require("xss-clean");
+const {
+  DashboardControllers,
+} = require("./src/controllers/DashboardControllers");
 
 //security middleware emplement
 app.use(cors());
@@ -64,7 +67,7 @@ const DB_OPTIONS = {
 };
 
 //connection database
-ConnectDB(MONGODB_CONNECTION_URL, DB_OPTIONS,);
+ConnectDB(MONGODB_CONNECTION_URL, DB_OPTIONS);
 app.use(express.static("client/build"));
 
 // Routing Implement
@@ -79,6 +82,7 @@ app.use("/api/v1/Footer", Footerroutes);
 app.use("/api/v1/Information", Informationroutes);
 app.use("/api/v1/HomeEtc", HomeEtcroutes);
 app.use("/api/v1/User", Profileroutes);
+app.get("/api/v1/DashboardSummary", DashboardControllers);
 
 // Add React Front End Routing
 app.get("*", (req, res) => {
@@ -89,6 +93,10 @@ app.get("*", (req, res) => {
 app.use(ErrorHandler.notFoundErrorHandler);
 
 // Default Error Handler
-app.use(ErrorHandler.defaultErrorHandler);
+app.use((err, req, res, next) => {
+  const message = err.message ?? "Server Error Occured";
+  const status = err.status ?? 500;
+  res.status(status).json({ message });
+});
 
 module.exports = app;

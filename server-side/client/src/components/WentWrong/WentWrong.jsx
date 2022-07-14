@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Error from "../../assets/img/error.svg";
+import Error from "../../Assets/img/error.svg";
 
 export class WentWrong extends Component {
   render() {

@@ -3,8 +3,8 @@ import React, { Component } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 
 //enternel imports
-import whiteLogo from "../../assets/images/whiteLogo.svg";
-import blueLogo from "../../assets/images/blueLogo.svg";
+import whiteLogo from "../../Assets/images/whiteLogo.svg";
+import blueLogo from "../../Assets/images/blueLogo.svg";
 import { NavLink, Link } from "react-router-dom";
 
 class TopNavigation extends Component {

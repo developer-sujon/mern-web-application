@@ -15,11 +15,11 @@ import WentWrong from "../components/WentWrong/WentWrong";
 import NotFound from "../components/NotFound/NotFound";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import Swal from "sweetalert2";
-import { isEmpty } from "../helper/Validation/Validation";
+import { isEmpty } from "../Helper/Validation/Validation";
 import {
   errorMessage,
   successMessage,
-} from "../helper/ToastMessage/ToastMessage";
+} from "../Helper/ToastMessage/ToastMessage";
 
 const AddChartModal = ({
   showAddModal,
@@ -39,7 +39,7 @@ const AddChartModal = ({
         <h2>Login Page</h2>
         <Form onSubmit={addChartHandler}>
           <Form.Group className="mb-3" controlId="chartXData">
-            <Form.Label>Chart Y Data</Form.Label>
+            <Form.Label>Chart X Data</Form.Label>
             <Form.Control
               type="number"
               placeholder="Chart X Data"
@@ -53,7 +53,7 @@ const AddChartModal = ({
           <Form.Group className="mb-3" controlId="chartYData">
             <Form.Label>Chart Y Data</Form.Label>
             <Form.Control
-              type="number"
+              type="text"
               placeholder="Chart Y Data"
               onChange={(e) => setField("chartYData", e.target.value)}
               isInvalid={!!errors.chartYData}
@@ -97,7 +97,7 @@ const UpdateChartModal = ({
           <Form.Group className="mb-3" controlId="chartXData">
             <Form.Label>Chart X Data</Form.Label>
             <Form.Control
-              type="text"
+              type="number"
               placeholder="Chart X Data"
               onChange={(e) => setField("chartXData", e.target.value)}
               isInvalid={!!errors.chartXData}
@@ -110,7 +110,7 @@ const UpdateChartModal = ({
           <Form.Group className="mb-3" controlId="chartYData">
             <Form.Label>Chart Y Data</Form.Label>
             <Form.Control
-              type="number"
+              type="text"
               placeholder="Chart Y Data"
               onChange={(e) => setField("chartYData", e.target.value)}
               isInvalid={!!errors.chartYData}
@@ -208,7 +208,7 @@ function ChartPage() {
     } else {
       RestClient.PostRequest(AppUrl.SelectAllChart, form)
         .then((data) => {
-          if (data.status === "success") {
+          if (data.status === 201) {
             successMessage("Chart Create Successfull");
             fetchAllChart();
             setShowAddModal(false);
@@ -228,11 +228,11 @@ function ChartPage() {
 
     RestClient.GetRequest(AppUrl.SelectAllChart + "/" + id)
       .then((data) => {
-        if (data.status === "success") {
+        if (data.status === 200) {
           setForm({
             ...form,
-            chartXData: data["data"][0].chartXData,
-            chartYData: data["data"][0].chartYData,
+            chartXData: data.data["data"][0].chartXData,
+            chartYData: data.data["data"][0].chartYData,
           });
           setIsloading(false);
         }
@@ -400,8 +400,8 @@ function ChartPage() {
 
   return (
     <>
-      <MasterLayout>
-        <Container fluid={true} className="content-body" title="Chart">
+      <MasterLayout title="Chart">
+        <Container fluid={true} className="content-body">
           <Row>
             <Col>
               <Button onClick={handleAddModalShow}>Add Chart</Button>

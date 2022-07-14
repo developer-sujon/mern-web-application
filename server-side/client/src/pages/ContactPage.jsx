@@ -79,8 +79,6 @@ function ContactPage() {
   };
 
   const onSelectHandler = (rows) => {
-    console.log(rows);
-
     setSelectedId(rows._id);
   };
 

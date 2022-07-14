@@ -25,3 +25,14 @@ a:hover {
 .react-bootstrap-table {
   overflow-x: scroll;
 }
+
+.full-screen-loader {
+  position: fixed;
+  top: 50%;
+  background: #fff;
+  left: 50%;
+  height: 100vh;
+  margin-top: 100px;
+  transform: translate(-50%, -50%);
+  bottom: 0;
+}

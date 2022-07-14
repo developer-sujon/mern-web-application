@@ -14,12 +14,12 @@ import Loading from "../components/Loading/Loading";
 import WentWrong from "../components/WentWrong/WentWrong";
 import NotFound from "../components/NotFound/NotFound";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
-import { isEmpty } from "../helper/Validation/Validation";
+import { isEmpty } from "../Helper/Validation/Validation";
 import Swal from "sweetalert2";
 import {
   errorMessage,
   successMessage,
-} from "../helper/ToastMessage/ToastMessage";
+} from "../Helper/ToastMessage/ToastMessage";
 
 const AddTestimonialModal = ({
   showAddModal,
@@ -246,7 +246,7 @@ function TestimonialPage() {
     } else {
       RestClient.PostRequest(AppUrl.SelectAllTestmonial, form)
         .then((data) => {
-          if (data.status === "success") {
+          if (data.status === 201) {
             successMessage("Testimonial Create Successfull");
             fetchAllTestimonial();
             setShowAddModal(false);
@@ -266,13 +266,13 @@ function TestimonialPage() {
 
     RestClient.GetRequest(AppUrl.SelectAllTestmonial + "/" + id)
       .then((data) => {
-        if (data.status === "success") {
+        if (data.status === 200) {
           setForm({
             ...form,
-            testmonialName: data["data"][0].testmonialName,
-            testmonialDescription: data["data"][0].testmonialDescription,
-            testmonialThumbnail: data["data"][0].testmonialThumbnail,
-            TestimonialCover: data["data"][0].TestimonialCover,
+            testmonialName: data.data["data"][0].testmonialName,
+            testmonialDescription: data.data["data"][0].testmonialDescription,
+            testmonialThumbnail: data.data["data"][0].testmonialThumbnail,
+            TestimonialCover: data.data["data"][0].TestimonialCover,
           });
           setIsloading(false);
         }
@@ -294,7 +294,7 @@ function TestimonialPage() {
         form,
       )
         .then((data) => {
-          if (data.status === "success") {
+          if (data.status === 200) {
             successMessage("Testimonial Update Successfull");
             fetchAllTestimonial();
             setShowEditModal(false);

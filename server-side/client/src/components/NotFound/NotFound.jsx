@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import NotFoundImg from "../../assets/img/NotFount.webp";
+import NotFoundImg from "../../Assets/img/NotFount.webp";
 
 export class NotFound extends Component {
   render() {

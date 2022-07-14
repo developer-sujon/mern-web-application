@@ -14,12 +14,12 @@ import Loading from "../components/Loading/Loading";
 import WentWrong from "../components/WentWrong/WentWrong";
 import NotFound from "../components/NotFound/NotFound";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
-import { isEmpty } from "../helper/Validation/Validation";
+import { isEmpty } from "../Helper/Validation/Validation";
 import Swal from "sweetalert2";
 import {
   errorMessage,
   successMessage,
-} from "../helper/ToastMessage/ToastMessage";
+} from "../Helper/ToastMessage/ToastMessage";
 
 const AddProjectModal = ({
   showAddModal,
@@ -320,14 +320,14 @@ function ProjectPage() {
 
     RestClient.GetRequest(AppUrl.SelectAllPortfolio + "/" + id)
       .then((data) => {
-        if (data.status === "success") {
+        if (data.status === 200) {
           setForm({
             ...form,
-            portfolioName: data["data"][0].portfolioName,
-            portfolioDescription: data["data"][0].portfolioDescription,
-            portfolioThumbnail: data["data"][0].portfolioThumbnail,
-            portfolioCover: data["data"][0].portfolioCover,
-            portfolioUrl: data["data"][0].portfolioUrl,
+            portfolioName: data.data["data"][0].portfolioName,
+            portfolioDescription: data.data["data"][0].portfolioDescription,
+            portfolioThumbnail: data.data["data"][0].portfolioThumbnail,
+            portfolioCover: data.data["data"][0].portfolioCover,
+            portfolioUrl: data.data["data"][0].portfolioUrl,
           });
           setIsloading(false);
         }
@@ -349,7 +349,7 @@ function ProjectPage() {
         form,
       )
         .then((data) => {
-          if (data.status === "success") {
+          if (data.status === 200) {
             successMessage("Project Update Successfull");
             fetchAllProject();
             setShowEditModal(false);
