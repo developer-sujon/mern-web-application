@@ -12,4 +12,4 @@ class FormValidation {
   }
 }
 
-export const { isEmpty } = new FormValidation();
+export const { isEmpty, isEmail, isMobile } = new FormValidation();

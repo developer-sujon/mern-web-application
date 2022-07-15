@@ -1,179 +1,95 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
-import BootstrapTable from "react-bootstrap-table-next";
-import paginationFactory from "react-bootstrap-table2-paginator";
-
-//Internal Lib Import
+import React, { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import MasterLayout from "../components/MasterLayout/MasterLayout";
-import AppUrl from "../Services/AppUrl";
+import {
+  errorMessage,
+  successMessage,
+} from "../Helper/ToastMessage/ToastMessage";
+import { isEmpty } from "../Helper/Validation/Validation";
 import RestClient from "../Services/RestClient";
 
-import Loading from "../components/Loading/Loading";
-import WentWrong from "../components/WentWrong/WentWrong";
-import NotFound from "../components/NotFound/NotFound";
-import { AiFillDelete, AiFillEdit } from "react-icons/ai";
+const SettingPage = () => {
+  const navigate = useNavigate();
 
-function SettingPage() {
-  const [contacts, setContacts] = useState([]);
-  const [isloading, setIsloading] = useState(true);
-  const [isError, setIsError] = useState(false);
+  let previousPasswordRef,
+    newPasswordRef,
+    confirmNewPasswordRef = useRef();
 
-  const fetchAllContact = () => {
-    RestClient.GetRequest(AppUrl.SelectAllMessage)
-      .then((response) => {
-        setContacts(response.data.data);
-        setIsloading(false);
-        setIsError(false);
-      })
-      .catch((err) => {
-        setIsloading(false);
-        setIsError(true);
+  const updatePassword = () => {
+    if (isEmpty(previousPasswordRef.value)) {
+      errorMessage("Previous Password is Required");
+    } else if (isEmpty(newPasswordRef.value)) {
+      errorMessage("New Password is Required");
+    } else if (isEmpty(confirmNewPasswordRef.value)) {
+      errorMessage("Confirm Password is Required");
+    } else if (newPasswordRef.value !== confirmNewPasswordRef.value) {
+      errorMessage("New & Confirm Password Not Match");
+    } else {
+      RestClient.PutRequest(
+        "user/changePassword",
+        previousPasswordRef.value,
+        newPasswordRef.value,
+      ).then((response) => {
+        if (response.status === 200) {
+          successMessage("Password Change Sucessfull");
+          navigate("/profile");
+        }
       });
+    }
   };
-  useEffect(() => {
-    fetchAllContact();
-  }, []);
-
-  const editContactHandler = (id) => {};
-  const deleteContactHandler = (id) => {
-    console.log(id);
-  };
-
-  //TODO
-  const deleteMultipleContactHandler = (rows, isSelect, index) => {};
-
-  const actionFormatter = (cellContent, row) => {
-    return (
-      <>
-        <Button
-          variant="warning"
-          className="me-2"
-          onClick={editContactHandler.bind(this, row._id)}
-        >
-          <AiFillEdit />
-        </Button>
-
-        <Button
-          variant="danger"
-          className="me-2"
-          onClick={deleteContactHandler.bind(this, row._id)}
-        >
-          <AiFillDelete />
-        </Button>
-      </>
-    );
-  };
-
-  const selectRow = {
-    mode: "checkbox",
-    clickToSelect: true,
-    onSelect: deleteMultipleContactHandler,
-  };
-
-  const options = {
-    sizePerPage: 10,
-    hideSizePerPage: true,
-  };
-
-  const defaultSorted = [
-    {
-      dataField: "_id",
-      order: "desc",
-    },
-  ];
-
-  const columns = [
-    {
-      dataField: "_id",
-      text: "Contact ID",
-      sort: true,
-    },
-    {
-      dataField: "contactName",
-      text: "Contact Name",
-      sort: true,
-    },
-    {
-      dataField: "contactEmail",
-      text: "Contact Email",
-      sort: true,
-    },
-    {
-      dataField: "contactMessage",
-      text: "Contact Message",
-      sort: true,
-    },
-    {
-      dataField: "df1",
-      isDummyField: true,
-      text: "Action",
-      formatter: actionFormatter,
-    },
-  ];
-
-  if (isloading) {
-    return (
-      <MasterLayout title="Setting">
-        <Container fluid={true} className="content-body">
-          <Row>
-            <Col>
-              <Loading />
-            </Col>
-          </Row>
-        </Container>
-      </MasterLayout>
-    );
-  } else if (isError) {
-    return (
-      <MasterLayout title="Setting">
-        <Container fluid={true} className="content-body">
-          <Row>
-            <Col>
-              <WentWrong />
-            </Col>
-          </Row>
-        </Container>
-      </MasterLayout>
-    );
-  } else if (contacts.length <= 0) {
-    return (
-      <MasterLayout title="Setting">
-        <Container fluid={true} className="content-body">
-          <Row>
-            <Col>
-              <NotFound />
-            </Col>
-          </Row>
-        </Container>
-      </MasterLayout>
-    );
-  }
 
   return (
-    <>
-      <MasterLayout title="Setting">
-        <Container fluid={true} className="content-body">
-          <Row>
-            <Col>
-              <BootstrapTable
-                bootstrap4
-                keyField="_id"
-                data={contacts}
-                columns={columns}
-                defaultSorted={defaultSorted}
-                striped
-                hover
-                selectRow={selectRow}
-                pagination={paginationFactory(options)}
-              />
-            </Col>
-          </Row>
-        </Container>
-      </MasterLayout>
-    </>
+    <MasterLayout>
+      <div className="container">
+        <div className="row d-flex justify-content-center">
+          <div className="col-md-6">
+            <div className="card">
+              <div className="card-body">
+                <div className="p-2">
+                  <label>Previous Password</label>
+                  <input
+                    key={Date.now()}
+                    ref={(input) => (previousPasswordRef = input)}
+                    placeholder="Previous Password"
+                    className="form-control animated fadeInUp"
+                    type="password"
+                  />
+                </div>
+                <div className="p-2">
+                  <label>New Password</label>
+                  <input
+                    key={Date.now()}
+                    ref={(input) => (newPasswordRef = input)}
+                    placeholder="New Password"
+                    className="form-control animated fadeInUp"
+                    type="password"
+                  />
+                </div>
+                <div className="p-2">
+                  <label>Confirm New Password</label>
+                  <input
+                    key={Date.now()}
+                    ref={(input) => (confirmNewPasswordRef = input)}
+                    placeholder="Confirm New Password"
+                    className="form-control animated fadeInUp"
+                    type="password"
+                  />
+                </div>
+                <div className="p-2">
+                  <button
+                    onClick={updatePassword}
+                    className="btn w-100 float-end btn-primary animated fadeInUp"
+                  >
+                    Update
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </MasterLayout>
   );
-}
+};
 
 export default SettingPage;

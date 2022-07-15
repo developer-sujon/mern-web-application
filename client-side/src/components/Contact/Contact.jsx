@@ -2,8 +2,8 @@
 import React, { Component } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { FaEnvelope, FaPhone } from "react-icons/fa";
-import { Error, Success } from "../../Helper/ToastMessage/ToastMessage";
-import { isEmpty } from "../../Helper/Validation/Validaion";
+import { Error, Success } from "../../helper/ToastMessage/ToastMessage";
+import { isEmpty } from "../../helper/Validation/Validaion";
 import AppUrl from "../../restApi/AppUrl";
 import RestClient from "../../restApi/RestClient";
 import Loading from "../Loading/Loading";

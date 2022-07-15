@@ -14,4 +14,10 @@ Profileroutes.get(
 );
 Profileroutes.post("/LoginProfile", ProfileController.LoginProfile);
 
+Profileroutes.put(
+  "/changePassword",
+  CheckLogin,
+  ProfileController.changePassword,
+);
+
 module.exports = Profileroutes;

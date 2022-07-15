@@ -102,3 +102,58 @@ exports.LoginProfile = (req, res) => {
     }
   });
 };
+
+//changePassword
+exports.changePassword = (req, res) => {
+  const { previousPassword, newPassword } = req.body;
+  const ejectingUser = Profile.aggregate(
+    [
+      {
+        $match: {
+          userName: req.userName,
+        },
+      },
+    ],
+    (err, data) => {
+      if (err) {
+        console.log(err);
+        res.status(500).json({ message: "there was server side error" });
+      } else {
+        if (data && data.length > 0) {
+          bcrypt.compare(previousPassword, data[0].password, (err, result) => {
+            if (result) {
+              bcrypt.hash(newPassword, 10, (err, hash) => {
+                if (err) {
+                  console.log(err);
+                  res
+                    .status(500)
+                    .json({ message: "there was server side error" });
+                } else {
+                  Profile.findByIdAndUpdate(
+                    { _id: req.id },
+                    { password: hash },
+                    { new: true },
+                    (err, data) => {
+                      if (err) {
+                        console.log(err);
+                        res.status(500).json({
+                          message: "there was server side error",
+                        });
+                      } else {
+                        res.json({ message: "Password Change Success" });
+                      }
+                    },
+                  );
+                }
+              });
+            } else {
+              res.status(400).json({ message: "Incorrect Password " });
+            }
+          });
+        } else {
+          res.status(401).json({ message: "unauthorized credential" });
+        }
+      }
+    },
+  );
+};

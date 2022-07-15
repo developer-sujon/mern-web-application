@@ -23,14 +23,14 @@ function Approutes() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<DashboardPage />} />
-            <Route path="contact" element={<ContactPage />} />
-            <Route path="chart" element={<ChartPage />} />
-            <Route path="course" element={<CoursePage />} />
-            <Route path="project" element={<ProjectPage />} />
-            <Route path="service" element={<ServicePage />} />
-            <Route path="testimonial" element={<TestimonialPage />} />
-            <Route path="profile" element={<ProfilePage />} />
-            <Route path="setting" element={<SettingPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/chart" element={<ChartPage />} />
+            <Route path="/course" element={<CoursePage />} />
+            <Route path="/project" element={<ProjectPage />} />
+            <Route path="/service" element={<ServicePage />} />
+            <Route path="/testimonial" element={<TestimonialPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/setting" element={<SettingPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>

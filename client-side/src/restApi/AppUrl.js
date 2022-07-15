@@ -1,5 +1,5 @@
 class AppUrl {
-  static BaseUrl = "https://mern-project-server-api.herokuapp.com/api/v1";
+  static BaseUrl = "http://localhost:8080/api/v1";
   static HomeEtc = this.BaseUrl + "/homeEtc";
   static Information = this.BaseUrl + "/information";
   static Footer = this.BaseUrl + "/footer";

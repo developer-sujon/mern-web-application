@@ -1,7 +1,8 @@
 //External Lib import
 import axios from "axios";
+import { errorMessage } from "../Helper/ToastMessage/ToastMessage";
 
-axios.defaults.baseURL = "/api/v1";
+axios.defaults.baseURL = "http://localhost:8080/api/v1";
 axios.defaults.headers.common["Authorization"] =
   "Bearer " + sessionStorage.getItem("accessToken");
 
@@ -52,6 +53,18 @@ class RestClient {
       })
       .catch((err) => {
         return null;
+      });
+  };
+
+  static PutRequest = (url, previousPassword, newPassword) => {
+    return axios
+      .put(url, { previousPassword, newPassword })
+      .then((response) => {
+        return response;
+      })
+      .catch((err) => {
+        console.log(err);
+        errorMessage(err.response.data.message);
       });
   };
 }
