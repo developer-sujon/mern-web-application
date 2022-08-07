@@ -6,7 +6,7 @@ const ErrorHandler = require("./src/middleware/ErrorHandler");
 const path = require("path");
 const app = new express();
 
-dotenv.config({ path: path.join(__dirname, "./confiq.env") });  
+dotenv.config({ path: path.join(__dirname, "./confiq.env") });
 
 //internal imports
 const ConnectDB = require("./src/config/ConnectDB");

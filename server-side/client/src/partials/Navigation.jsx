@@ -74,7 +74,7 @@ function Navigation({ openMenu, setOpenMenu, title }) {
             <div className="user-dropdown">
               <img
                 className="icon-nav-img icon-nav"
-                src="https://avatars.githubusercontent.com/u/65336862?v=4"
+                src="https://firebasestorage.googleapis.com/v0/b/portfolio-66931.appspot.com/o/avata.jpg?alt=media&token=9a5ea3bc-e734-4174-a90b-5c468aacff74"
                 alt="avater"
                 onClick={() => setOpenDropdown(!openDropdown)}
               />
@@ -88,7 +88,7 @@ function Navigation({ openMenu, setOpenMenu, title }) {
                 <div className="mt-4 text-center">
                   <img
                     className="icon-nav-img"
-                    src="https://avatars.githubusercontent.com/u/65336862?v=4"
+                    src="https://firebasestorage.googleapis.com/v0/b/portfolio-66931.appspot.com/o/avata.jpg?alt=media&token=9a5ea3bc-e734-4174-a90b-5c468aacff74"
                     alt="avater"
                   />
                   <h6>Mohammad Sujon</h6>

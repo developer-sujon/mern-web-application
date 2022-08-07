@@ -2,7 +2,7 @@
 import axios from "axios";
 import { errorMessage } from "../Helper/ToastMessage/ToastMessage";
 
-axios.defaults.baseURL = "http://localhost:8080/api/v1";
+axios.defaults.baseURL = "/api/v1";
 axios.defaults.headers.common["Authorization"] =
   "Bearer " + sessionStorage.getItem("accessToken");
 
